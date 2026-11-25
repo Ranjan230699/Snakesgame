@@ -1,25 +1,38 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-    <h1>🐍 Snake Game</h1>
+    <div class="game-card">
+        <h1>🐍 Snake Game</h1>
 
-    <h2>Score: <span id="score">0</span></h2>
+        <div class="top-bar">
+            <div class="score-box">
+                Score: <span id="score">0</span>
+            </div>
 
-    <canvas id="gameCanvas"
-            width="400"
-            height="400"></canvas>
+            <div class="difficulty-box">
+                <label for="levelSelect">Speed:</label>
+                <select id="levelSelect" onchange="changeSpeed()">
+                    <option value="220">Easy</option>
+                    <option value="150" selected>Medium</option>
+                    <option value="80">High</option>
+                </select>
+            </div>
+        </div>
 
-    <br><br>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
 
-    <button onclick="startGame()">Start Game</button>
+        <button class="start-btn" onclick="startGame()">▶ Start Game</button>
+
+        <p class="hint">Use <span>⬆</span> <span>⬇</span> <span>⬅</span> <span>➡</span> arrow keys to move</p>
+    </div>
 
     <script src="/game.js"></script>
-
 </body>
 </html>

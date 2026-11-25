@@ -86,6 +86,19 @@ document.addEventListener("keydown", function(e) {
     }
 });
 
+function getSelectedSpeed() {
+    const levelDropdown = document.getElementById("levelSelect");
+    return levelDropdown ? parseInt(levelDropdown.value) : 150;
+}
+
+function changeSpeed() {
+    // If the game is currently running, update speed immediately
+    if (running) {
+        clearInterval(game);
+        game = setInterval(moveSnake, getSelectedSpeed());
+    }
+}
+
 function startGame() {
     clearInterval(game);
 
@@ -100,7 +113,24 @@ function startGame() {
     createFood();
     drawGame();
 
-    game = setInterval(moveSnake, 150);
+    game = setInterval(moveSnake, getSelectedSpeed());
 }
+
+//function startGame() {
+//    clearInterval(game);
+//
+//    snake = [{ x: 200, y: 200 }];
+//    dx = box;
+//    dy = 0;
+//    score = 0;
+//    running = true;
+//
+//    document.getElementById("score").innerText = score;
+//
+//    createFood();
+//    drawGame();
+//
+//    game = setInterval(moveSnake, 150);
+//}
 
 drawGame();
